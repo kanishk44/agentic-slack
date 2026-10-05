@@ -1,0 +1,19 @@
+{
+  "name": "ai-native-slack",
+  "private": true,
+  "packageManager": "pnpm@10.0.0",
+  "scripts": {
+    "dev": "pnpm --filter @slack/shared build && concurrently -n shared,server,web -c magenta,blue,green \"pnpm --filter @slack/shared dev\" \"pnpm --filter @slack/server dev\" \"pnpm --filter @slack/web dev\"",
+    "build": "pnpm -r build",
+    "typecheck": "pnpm -r typecheck",
+    "db:up": "docker compose up -d",
+    "db:down": "docker compose down"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild"]
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0",
+    "typescript": "^5.6.3"
+  }
+}

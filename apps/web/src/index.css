@@ -1,0 +1,140 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "highlight.js/styles/github-dark.css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.141 0.005 285.823);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.141 0.005 285.823);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.141 0.005 285.823);
+  --primary: oklch(0.488 0.217 264.376);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.967 0.001 286.375);
+  --secondary-foreground: oklch(0.21 0.006 285.885);
+  --muted: oklch(0.967 0.001 286.375);
+  --muted-foreground: oklch(0.552 0.016 285.938);
+  --accent: oklch(0.967 0.001 286.375);
+  --accent-foreground: oklch(0.21 0.006 285.885);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.92 0.004 286.32);
+  --input: oklch(0.92 0.004 286.32);
+  --ring: oklch(0.488 0.217 264.376);
+  --sidebar: oklch(0.27 0.06 280);
+  --sidebar-foreground: oklch(0.92 0.02 280);
+  --sidebar-muted: oklch(0.72 0.04 280);
+  --sidebar-accent: oklch(0.35 0.07 280);
+  --sidebar-primary: oklch(0.55 0.2 264);
+  --sidebar-border: oklch(0.35 0.05 280);
+  --mention: oklch(0.93 0.05 264);
+  --mention-foreground: oklch(0.42 0.2 264);
+}
+
+.dark {
+  --background: oklch(0.17 0.006 285.885);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.21 0.006 285.885);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.21 0.006 285.885);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.6 0.2 264.376);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.274 0.006 286.033);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.274 0.006 286.033);
+  --muted-foreground: oklch(0.705 0.015 286.067);
+  --accent: oklch(0.274 0.006 286.033);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.6 0.2 264.376);
+  --sidebar: oklch(0.2 0.03 280);
+  --sidebar-foreground: oklch(0.92 0.02 280);
+  --sidebar-muted: oklch(0.68 0.03 280);
+  --sidebar-accent: oklch(0.29 0.05 280);
+  --sidebar-primary: oklch(0.55 0.2 264);
+  --sidebar-border: oklch(0.3 0.04 280);
+  --mention: oklch(0.35 0.08 264);
+  --mention-foreground: oklch(0.85 0.1 264);
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-muted: var(--sidebar-muted);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-mention: var(--mention);
+  --color-mention-foreground: var(--mention-foreground);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html,
+  body,
+  #root {
+    @apply h-full;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv11", "ss01";
+  }
+}
+
+/* Agent markdown output */
+.prose-message {
+  @apply text-sm leading-relaxed break-words;
+}
+.prose-message p { @apply my-1; }
+.prose-message h1 { @apply text-lg font-semibold mt-3 mb-1; }
+.prose-message h2 { @apply text-base font-semibold mt-3 mb-1; }
+.prose-message h3 { @apply text-sm font-semibold mt-2 mb-1; }
+.prose-message ul { @apply list-disc pl-5 my-1; }
+.prose-message ol { @apply list-decimal pl-5 my-1; }
+.prose-message li { @apply my-0.5; }
+.prose-message a { @apply text-primary underline underline-offset-2; }
+.prose-message blockquote { @apply border-l-4 pl-3 text-muted-foreground my-2; }
+.prose-message table { @apply my-2 text-xs border-collapse block overflow-x-auto; }
+.prose-message th, .prose-message td { @apply border px-2 py-1 text-left; }
+.prose-message th { @apply bg-muted font-semibold; }
+.prose-message hr { @apply my-3; }
+.prose-message :not(pre) > code { @apply rounded bg-muted px-1 py-0.5 font-mono text-[0.8125rem] text-rose-600 dark:text-rose-400; }
+.prose-message pre { @apply my-0 overflow-x-auto text-[0.8125rem] leading-relaxed; }
+.prose-message pre code.hljs { @apply bg-transparent p-0; }
+
+@keyframes caret-blink { 50% { opacity: 0; } }
+.is-streaming .prose-message > :last-child:not(div)::after {
+  content: "▍";
+  @apply ml-0.5 text-primary;
+  animation: caret-blink 1s steps(1) infinite;
+}
